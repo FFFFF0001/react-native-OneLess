@@ -1,3 +1,6 @@
+/**
+ * Created by mifind on 2016/12/27.
+ */
 import React, {Component} from 'react';
 import {
     StyleSheet,

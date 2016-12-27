@@ -1,5 +1,5 @@
 /**
- * Created by kenny on 16/12/7.
+ * Created by mifind on 16/12/7.
  *
  * 使用方法
  *  var StyleSheet = require('ccmsStyle')
