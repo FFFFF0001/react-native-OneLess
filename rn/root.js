@@ -12,7 +12,7 @@ class RootComponent extends Component {
 
     render() {
         return (
-            <App initialRoute={{name: 'Home', component: Home}}/>
+            <App initialRoute={{title: 'Home', component: Home}}/>
         );
     }
 }

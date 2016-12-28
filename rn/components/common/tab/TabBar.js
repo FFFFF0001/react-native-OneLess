@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
         right: 0,
         left: 0,
         opacity: 1,
-        backgroundColor: 'transparent',
+        backgroundColor: 'white',
         width: Dimensions.get('window').width,
         overflow: 'hidden',
     },
@@ -164,13 +164,12 @@ const styles = StyleSheet.create({
         position: 'absolute',
         borderRadius: 28,
         borderWidth: 3,
-        borderColor: '#fff',
+        borderColor: 'white',
         alignSelf: 'center'
     },
     horizonLine: {
         backgroundColor: '#adadad',
-        height: 1,
+        height: 0.5,
         width: Dimensions.get('window').width,
     },
-
 });

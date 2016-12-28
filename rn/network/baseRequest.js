@@ -2,21 +2,11 @@
  * Created by mifind on 16/12/6.
  */
 
-import AppConst from '../constants/ContextConst'
-import ResponseCode from '../constants/ResponseCode'
-import commonFunction from '../common/commonFunction'
-
 class BaseRequest {
     constructor(body,method) {
         if(!body) {
             body = {}
         }
-        Object.assign(body,{
-            serviceVersion:AppConst.serviceVersion,
-            osType:AppConst.osType,
-            channel:AppConst.channel,
-            // deviceTdId:store.getState().deviceId.talkingDataId
-        });
         this.body = JSON.stringify(body);
         if(!method||(method!='GET'&&method!='POST')) {
             method = 'POST'

@@ -6,7 +6,7 @@ import {
     View,
 } from 'react-native';
 import resources from '../../common/CommonResources'
-var StyleSheet = require('./CommonStyleSheet')
+var StyleSheet = require('./../../common/CommonStyleSheet')
 var scale = resources.screen.scale;
 const screenWidth = resources.screen.screenWidth
 

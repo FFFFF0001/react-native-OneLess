@@ -10,7 +10,7 @@ import {
     Text
 } from 'react-native';
 
-var StyleSheet = require('./CommonStyleSheet');
+var StyleSheet = require('./../../common/CommonStyleSheet');
 
 /**
  * 如果title为一行就传一个string，如果为两行（类似一键借款）就传数组
@@ -63,7 +63,7 @@ export default class NormalNavigationBar extends Component {
                 <View style={styles.navBar}>
                     <TouchableOpacity style={{marginLeft:15,justifyContent:'center'}}
                                       onPress={() => this._leftButtonHandler()}>
-                        <Image style={{width:20,height:16}} source={require('../../img/navigation/back.png')}/>
+                        <Image style={{width:20,height:16}} source={require('../../images/back.png')}/>
                     </TouchableOpacity>
                     {this.renderTitle()}
                 </View>

@@ -7,8 +7,10 @@ import{
     Text
 }from 'react-native';
 import TabBar from '../common/tab/TabBar'
-var StyleSheet = require('../common/CommonStyleSheet')
+import TitleBar from '../common/TitleBar'
+import HomeRoute from './HomeRoute'
 import resources from '../../common/CommonResources'
+var StyleSheet = require('../../common/CommonStyleSheet')
 var scale = resources.screen.scale;
 export default class Home extends Component {
     constructor(props) {
@@ -19,35 +21,36 @@ export default class Home extends Component {
     }
 
     render() {
-        var self = this;
         return (
             <View style={styles.container}>
-                <Text>显示{this.state.selectedIndex}页</Text>
-                <TabBar style={styles.content}
-                        defaultPage={this.state.selectedIndex}
+                <TitleBar
+                    position={this.state.selectedIndex}
+                />
+                <HomeRoute position={this.state.selectedIndex}/>
+                <TabBar defaultPage={this.state.selectedIndex}
                         onItemSelected={(index)=>this.setState({selectedIndex:index})}>
                     <TabBar.Item
                         icon={require('../../images/home.png')}
                         selectedIcon={require('../../images/home_active.png')}
-                        title='首页'>
+                    >
                     </TabBar.Item>
 
                     <TabBar.Item
                         icon={require('../../images/reading.png')}
                         selectedIcon={require('../../images/reading_active.png')}
-                        title='阅读'>
+                    >
                     </TabBar.Item>
 
                     <TabBar.Item
                         icon={require('../../images/music.png')}
                         selectedIcon={require('../../images/music_active.png')}
-                        title='音乐'>
+                    >
                     </TabBar.Item>
 
                     <TabBar.Item
                         icon={require('../../images/movie.png')}
                         selectedIcon={require('../../images/movie_active.png')}
-                        title='电影'>
+                    >
                     </TabBar.Item>
                 </TabBar>
             </View>
@@ -56,11 +59,6 @@ export default class Home extends Component {
 }
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    content: {
         flex: 1,
     },
     text: {
