@@ -3,7 +3,6 @@
  */
 import React, {Component} from 'react';
 import {View, StyleSheet} from 'react-native';
-import Navigator from '../../components/App';
 import Picture from '../picture'
 import Movie from '../movie'
 import Music from '../music'

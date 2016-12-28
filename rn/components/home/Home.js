@@ -9,8 +9,8 @@ import{
 import TabBar from '../common/tab/TabBar'
 import TitleBar from '../common/TitleBar'
 import HomeRoute from './HomeRoute'
-import resources from '../../common/CommonResources'
-var StyleSheet = require('../../common/CommonStyleSheet')
+import resources from '../../common/commonResources'
+var StyleSheet = require('../../common/commonStyleSheet')
 var scale = resources.screen.scale;
 export default class Home extends Component {
     constructor(props) {
