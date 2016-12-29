@@ -8,10 +8,8 @@ import{
 }from 'react-native';
 import TabBar from '../common/tab/TabBar'
 import TitleBar from '../common/TitleBar'
-import HomeRoute from './HomeRoute'
-import resources from '../../common/commonResources'
+import HomeRoute from  './HomeRoute'
 var StyleSheet = require('../../common/commonStyleSheet')
-var scale = resources.screen.scale;
 export default class Home extends Component {
     constructor(props) {
         super(props);
@@ -20,15 +18,19 @@ export default class Home extends Component {
         };
     }
 
+    selectedItem(index) {
+        this.route.route(index)
+    }
+
     render() {
         return (
             <View style={styles.container}>
                 <TitleBar
                     position={this.state.selectedIndex}
                 />
-                <HomeRoute position={this.state.selectedIndex}/>
+                <HomeRoute ref={(route)=>(this.route=route)}/>
                 <TabBar defaultPage={this.state.selectedIndex}
-                        onItemSelected={(index)=>this.setState({selectedIndex:index})}>
+                        onItemSelected={(index)=>this.selectedItem(index)}>
                     <TabBar.Item
                         icon={require('../../images/home.png')}
                         selectedIcon={require('../../images/home_active.png')}

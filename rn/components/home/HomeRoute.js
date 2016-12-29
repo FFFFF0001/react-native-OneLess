@@ -7,23 +7,29 @@ import Picture from '../picture'
 import Movie from '../movie'
 import Music from '../music'
 import Read from '../read'
+import Swiper from '../common/Swiper'
+
 export default class HomeRoute extends Component {
     constructor() {
         super();
-        this.state = {};
+    }
+
+    route(index) {
+        this.swipe.setPage(index)
     }
 
     render() {
-        let pos = this.props.position;
-        if (pos == 0) {
-            return (<Picture/> );
-        } else if (pos == 1) {
-            return (<Read/>  );
-        } else if (pos == 2) {
-            return ( <Music/>  );
-        } else if (pos == 3) {
-            return ( <Movie/>  );
-        }
+        return (
+            <Swiper
+                scrollEnabled={false}
+                ref={(swipe) => { this.swipe = swipe}}
+            >
+                <Picture/>
+                <Read/>
+                <Music/>
+                <Movie/>
+            </Swiper>
+        )
     }
 }
 const styles = StyleSheet.create({});
