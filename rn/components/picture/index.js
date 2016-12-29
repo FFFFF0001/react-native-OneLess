@@ -7,7 +7,8 @@ import {
     Text,
     TouchableWithoutFeedback
 } from 'react-native';
-import Swiper from '../common/Swiper'
+// import Swiper from '../../components/common/Swiper'
+import Swiper from './PicSwipe'
 var StyleSheet = require('../../common/commonStyleSheet')
 import {fetchData} from './Fun'
 export default class Picture extends Component {
@@ -20,10 +21,6 @@ export default class Picture extends Component {
 
     componentWillMount() {
         fetchData(this);
-    }
-
-    ge() {
-        this.swipe.scrollBy(7, false)
     }
 
     renderPanels() {
@@ -42,6 +39,7 @@ export default class Picture extends Component {
     render() {
         return (
             <Swiper
+                bounces={true}
                 loop={false}
                 ref={(swipe) => { this.swipe = swipe}}
             >
