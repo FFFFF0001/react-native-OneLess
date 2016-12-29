@@ -7,7 +7,6 @@ import {
     Text,
     TouchableWithoutFeedback
 } from 'react-native';
-// import Swiper from '../../components/common/Swiper'
 import Swiper from './PicSwipe'
 var StyleSheet = require('../../common/commonStyleSheet')
 import {fetchData} from './Fun'

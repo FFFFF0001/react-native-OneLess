@@ -12,3 +12,6 @@
       Android通过setPage进行切换，
       IOS通过scrollTo进行切换，
       同时给出animated的参数，也可以设置移动效果，但是默认禁止了。
+* PicSwipe进行处理：在底层通过绝对布局固定视图，根据手势对View进行变化。
+
+
