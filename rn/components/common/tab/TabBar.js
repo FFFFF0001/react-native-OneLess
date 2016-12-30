@@ -157,16 +157,6 @@ const styles = StyleSheet.create({
         marginBottom: 2,
         alignSelf: 'center'
     },
-    navImageChange: {
-        width: 45,
-        height: 45,
-        marginBottom: 2,
-        position: 'absolute',
-        borderRadius: 28,
-        borderWidth: 3,
-        borderColor: 'white',
-        alignSelf: 'center'
-    },
     horizonLine: {
         backgroundColor: '#adadad',
         height: 0.5,

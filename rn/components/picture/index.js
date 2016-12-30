@@ -8,31 +8,37 @@ import {
     TouchableWithoutFeedback
 } from 'react-native';
 import Swiper from './PicSwipe'
+import {fetchList} from './Fun'
+import PicItem from './PicItem'
 var StyleSheet = require('../../common/commonStyleSheet')
-import {fetchData} from './Fun'
+var details = []
 export default class Picture extends Component {
     constructor() {
         super();
         this.state = {
             idlist: [],
-        };
+        }
     }
 
     componentWillMount() {
-        fetchData(this);
+        fetchList(this);
     }
 
     renderPanels() {
         let content = []
         this.state.idlist.map((item, i) =>
-            content.push(
-                <View
-                    key={i}
-                    style={styles.slide1}>
-                    <Text style={styles.text}>{item}</Text>
-                </View>
-            ));
+            this.renderDetail(content, item, i)
+        );
         return content
+    }
+
+    renderDetail(content, item, i) {
+        content.push(
+            <PicItem
+                key={i}
+                index={item}
+            />
+        )
     }
 
     render() {
@@ -47,6 +53,7 @@ export default class Picture extends Component {
         );
     }
 }
+
 const styles = StyleSheet.create({
     wrapper: {},
     slide1: {
