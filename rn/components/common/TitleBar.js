@@ -29,6 +29,7 @@ export default class TitleBar extends Component {
 
     _renderTitle() {
         let position = this.props.position;
+
         if (position === 0) {
             return (
                 <Image style={{width:38*scale,height:14*scale}}

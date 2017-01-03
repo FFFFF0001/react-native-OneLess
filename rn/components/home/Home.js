@@ -20,6 +20,9 @@ export default class Home extends Component {
 
     selectedItem(index) {
         this.route.route(index)
+        this.setState({
+            selectedIndex: index
+        })
     }
 
     render() {
@@ -28,7 +31,9 @@ export default class Home extends Component {
                 <TitleBar
                     position={this.state.selectedIndex}
                 />
-                <HomeRoute ref={(route)=>(this.route=route)}/>
+                <HomeRoute
+                    navigator={this.props.navigator}
+                    ref={(route)=>(this.route=route)}/>
                 <TabBar defaultPage={this.state.selectedIndex}
                         onItemSelected={(index)=>this.selectedItem(index)}>
                     <TabBar.Item

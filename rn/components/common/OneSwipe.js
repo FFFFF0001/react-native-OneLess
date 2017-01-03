@@ -13,14 +13,13 @@ import {
 var Dimensions = require('Dimensions');
 var screenWidth = Dimensions.get('window').width;
 var screenHeight = Dimensions.get('window').height;
-export default class PicSwiper extends Component {
+export default class OneSwipe extends Component {
     static propTypes = {
         children: React.PropTypes.node.isRequired,
         index: React.PropTypes.number,
         threshold: React.PropTypes.number,
         pager: React.PropTypes.bool,
         onPageChange: React.PropTypes.func,
-        activeDotColor: React.PropTypes.string,
     };
 
     static defaultProps = {
@@ -29,7 +28,6 @@ export default class PicSwiper extends Component {
         threshold: 25,
         onPageChange: () => {
         },
-        activeDotColor: 'blue',
     };
 
     constructor(props) {

@@ -492,8 +492,8 @@ export default class extends Component {
         let dots = []
         const ActiveDot = this.props.activeDot || <View style={[{
       backgroundColor: this.props.activeDotColor || '#007aff',
-      width: 8,
-      height: 8,
+      width: 5,
+      height: 5,
       borderRadius: 4,
       marginLeft: 3,
       marginRight: 3,
@@ -502,8 +502,8 @@ export default class extends Component {
     }, this.props.activeDotStyle]}/>
         const Dot = this.props.dot || <View style={[{
       backgroundColor: this.props.dotColor || 'rgba(0,0,0,.2)',
-      width: 8,
-      height: 8,
+      width: 5,
+      height: 5,
       borderRadius: 4,
       marginLeft: 3,
       marginRight: 3,

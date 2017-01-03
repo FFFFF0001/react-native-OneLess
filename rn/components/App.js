@@ -30,9 +30,9 @@ export default class App extends React.Component {
             const handleBack = top.handleBack || top.component.handleBack;
             if (handleBack) {
                 // 路由或组件上决定这个界面自行处理back键
-                if(handleBack()){
+                if (handleBack()) {
                     return handleBack()
-                }else{
+                } else {
                     nav.pop();
                     return true;
                 }

@@ -7,7 +7,7 @@ import {
     Text,
     TouchableWithoutFeedback
 } from 'react-native';
-import Swiper from './PicSwipe'
+import OneSwiper from '../common/OneSwipe'
 import {fetchList} from './Fun'
 import PicItem from './PicItem'
 var StyleSheet = require('../../common/commonStyleSheet')
@@ -43,13 +43,9 @@ export default class Picture extends Component {
 
     render() {
         return (
-            <Swiper
-                bounces={true}
-                loop={false}
-                ref={(swipe) => { this.swipe = swipe}}
-            >
+            <OneSwiper>
                 {this.renderPanels()}
-            </Swiper>
+            </OneSwiper>
         );
     }
 }

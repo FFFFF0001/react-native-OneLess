@@ -24,10 +24,10 @@ export default class HomeRoute extends Component {
                 scrollEnabled={false}
                 ref={(swipe) => { this.swipe = swipe}}
             >
-                <Picture/>
-                <Read/>
-                <Music/>
-                <Movie/>
+                <Picture navigator={this.props.navigator}/>
+                <Read navigator={this.props.navigator}/>
+                <Music navigator={this.props.navigator}/>
+                <Movie navigator={this.props.navigator}/>
             </Swiper>
         )
     }
