@@ -20,7 +20,9 @@
 
 ![](https://github.com/MIFind/react-native-OneLess/blob/master/image/One2.gif)  
 
+1月3日更新，完成Read轮播部分：还有些许问题。
+![](https://github.com/MIFind/react-native-OneLess/blob/master/image/One3.gif)  
+
 ####目前问题:
    * PICTURE：左滑刷新，右滑十页进入历史菜单未完成
    * 收藏、分享问题
-   * RN如何打无服务器签名包问题。
