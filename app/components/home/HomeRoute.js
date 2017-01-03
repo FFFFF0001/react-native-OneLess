@@ -2,7 +2,7 @@
  * Created by mifind on 2016/12/28.
  */
 import React, {Component} from 'react';
-import {View, StyleSheet} from 'react-native';
+import {View} from 'react-native';
 import Picture from '../picture'
 import Movie from '../movie'
 import Music from '../music'
@@ -15,7 +15,7 @@ export default class HomeRoute extends Component {
     }
 
     route(index) {
-        this.swipe.setPage(index)
+        this.swipe.setPage(index);
     }
 
     render() {
@@ -32,4 +32,3 @@ export default class HomeRoute extends Component {
         )
     }
 }
-const styles = StyleSheet.create({});

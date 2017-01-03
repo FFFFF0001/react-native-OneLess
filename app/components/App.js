@@ -8,7 +8,7 @@ import {
     BackAndroid
 } from 'react-native';
 
-export default class App extends React.Component {
+export default class App extends Component {
 
     componentWillUnmount() {
         BackAndroid.removeEventListener('hardwareBackPress', this.onBackAndroid.bind(this));
@@ -44,16 +44,28 @@ export default class App extends React.Component {
         return false;
     };
 
+    /**
+     * 配置场景动画
+     * @param route 路由
+     * @param routeStack 路由栈
+     * @returns {*} 动画
+     */
+    configureScene = (route) => {
+        if (route.type == 'Bottom') {
+            var conf = Navigator.SceneConfigs.FloatFromBottom;
+        } else {
+            var conf = Navigator.SceneConfigs.PushFromRight;
+        }
+        conf.gestures = null;
+        return conf;
+    }
+
     render() {
         return (
             <Navigator
                 ref={(navigator) => { this.navigator = navigator }}
                 initialRoute={this.props.initialRoute}
-                configureScene={(route) => {
-                    var conf = Navigator.SceneConfigs.PushFromRight;
-                    conf.gestures = null;
-                    return conf;
-                }}
+                configureScene={this.configureScene}
                 renderScene={(route, navigator) => {
                     let navProps = {};
                     Object.assign(navProps, route, {navigator});
@@ -70,7 +82,7 @@ export default class App extends React.Component {
     }
 }
 
-var styles = StyleSheet.create({
+const styles = StyleSheet.create({
     sceneStyle: {
         shadowColor: '#000000',
         shadowOpacity: .5,

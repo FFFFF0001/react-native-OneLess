@@ -7,7 +7,6 @@ import {
 } from 'react-native';
 import ReadSwiper from './ReadSwiper'
 import {fetchReadingImageList} from './Fun'
-var StyleSheet = require('../../common/commonStyleSheet')
 
 export default class Read extends Component {
     constructor() {
@@ -26,10 +25,8 @@ export default class Read extends Component {
             <View style={{flex:1}}>
                 <ReadSwiper
                     navigator={this.props.navigator}
-                    data={this.state.data}
-                ></ReadSwiper>
+                    data={this.state.data}/>
             </View>
         );
     }
 }
-const styles = StyleSheet.create({});

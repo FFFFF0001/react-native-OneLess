@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import res from '../../common/commonResources'
 import {fetchDetail} from './Fun'
-var StyleSheet = require('../../common/commonStyleSheet')
+const StyleSheet = require('../../common/commonStyleSheet');
 const scaleX = res.screen.scaleX;
 export default class PicItem extends Component {
     constructor() {

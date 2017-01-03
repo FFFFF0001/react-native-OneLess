@@ -10,8 +10,6 @@ import {
 import OneSwiper from '../common/OneSwipe'
 import {fetchList} from './Fun'
 import PicItem from './PicItem'
-var StyleSheet = require('../../common/commonStyleSheet')
-var details = []
 export default class Picture extends Component {
     constructor() {
         super();
@@ -25,7 +23,7 @@ export default class Picture extends Component {
     }
 
     renderPanels() {
-        let content = []
+        let content = [];
         this.state.idlist.map((item, i) =>
             this.renderDetail(content, item, i)
         );
@@ -38,7 +36,7 @@ export default class Picture extends Component {
                 key={i}
                 index={item}
             />
-        )
+        );
     }
 
     render() {
@@ -49,30 +47,3 @@ export default class Picture extends Component {
         );
     }
 }
-
-const styles = StyleSheet.create({
-    wrapper: {},
-    slide1: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#9DD6EB',
-    },
-    slide2: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#97CAE5',
-    },
-    slide3: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#92BBD9',
-    },
-    text: {
-        color: '#fff',
-        fontSize: 30,
-        fontWeight: 'bold',
-    }
-});

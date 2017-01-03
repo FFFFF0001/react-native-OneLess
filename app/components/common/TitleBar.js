@@ -8,9 +8,9 @@ import {
     Text,
     Image
 } from 'react-native';
-var StyleSheet = require('./../../common/commonStyleSheet')
 import resources from '../../common/commonResources'
-var scale = resources.screen.scale;
+const StyleSheet = require('./../../common/commonStyleSheet');
+const scale = resources.screen.scale;
 const TITLES = ['ONE', '阅读', '音乐', '电影'];
 export default class TitleBar extends Component {
     constructor() {

@@ -7,7 +7,6 @@ import {
     View,
     Image,
     Navigator
-
 } from 'react-native';
 import Swiper from '../common/Swiper'
 import res from '../../common/commonResources'
@@ -24,7 +23,12 @@ export default class ReadSwiper extends Component {
     _onPress(item) {
         this.props.navigator.push({
             component: ReadCarouselDetail,
-            bgcolor: item.bgcolor
+            type: 'Bottom',
+            bgcolor: item.bgcolor,
+            bottom_text: item.bottom_text,
+            bottom_image: item.cover,
+            carouselTitle: item.title,
+            carouselId: item.id
         })
     }
 

@@ -4,7 +4,7 @@ import {
     AppRegistry
 } from 'react-native';
 
-import Root from './rn/root'
+import Root from './app/root'
 
 class OneLessApp extends Component {
 

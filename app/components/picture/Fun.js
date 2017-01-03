@@ -4,7 +4,7 @@
 import {getLatestPictureIdList, getPictureDetail} from '../../network/picture'
 export function fetchList(self) {
     getLatestPictureIdList().then(data => {
-        console.log(data)
+        console.log(data);
         self.setState({
             idlist: data
         })

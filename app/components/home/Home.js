@@ -9,7 +9,7 @@ import{
 import TabBar from '../common/tab/TabBar'
 import TitleBar from '../common/TitleBar'
 import HomeRoute from  './HomeRoute'
-var StyleSheet = require('../../common/commonStyleSheet')
+const StyleSheet = require('../../common/commonStyleSheet')
 export default class Home extends Component {
     constructor(props) {
         super(props);

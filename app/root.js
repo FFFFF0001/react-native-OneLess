@@ -5,6 +5,7 @@
 import React, {Component} from 'react';
 import App from './components/App';
 import Home from './components/home/Home'
+import Test from './components/read/ReadCarouselDetail'
 class RootComponent extends Component {
     constructor() {
         super();
