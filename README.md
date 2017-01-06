@@ -20,7 +20,9 @@
 
 ![](https://github.com/MIFind/react-native-OneLess/blob/master/image/One2.gif)  
 
-1月3日更新，完成Read轮播部分：还有些许问题。
+
+####1月3日更新，完成Read轮播部分,还有些许问题:
+<br/>
 ![](https://github.com/MIFind/react-native-OneLess/blob/master/image/One3.gif)  
 
 ####目前问题:
