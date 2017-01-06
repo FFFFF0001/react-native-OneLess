@@ -33,23 +33,28 @@ export default class PicItem extends Component {
     render() {
         return (
             <View style={styles.containers}>
-                <ScrollView horizontal={false}>
-                    <View style={styles.containerOn}>
-                        <Image style={styles.picture}
-                               source={this.state.hp_img_url===''?require('../../images/picitem_default.png'):{uri: this.state.hp_img_url}}/>
-                        <View
-                            style={{backgroundColor:'white',flexDirection:'row',justifyContent:'space-between',marginTop:5,padding:3}}>
-                            <Text style={{color:'#ccc',fontSize:12}}>{this.state.hp_title}</Text>
-                            <Text style={{color:'#ccc',fontSize:12}}>{this.state.hp_author}</Text>
+                <View style={{height:res.screen.screenHeight - 230}}>
+                    <ScrollView showsVerticalScrollIndicator={false}
+                                removeClippedSubviews={false}>
+                        <View style={styles.containerOn}>
+                            <Image
+                                resizeMode={Image.resizeMode.contain}
+                                style={styles.picture}
+                                source={this.state.hp_img_url===''?require('../../images/loading_12.png'):{uri: this.state.hp_img_url}}/>
+                            <View
+                                style={{backgroundColor:'white',flexDirection:'row',justifyContent:'space-between',marginTop:5,padding:3}}>
+                                <Text style={{color:'#ccc',fontSize:12}}>{this.state.hp_title}</Text>
+                                <Text style={{color:'#ccc',fontSize:12}}>{this.state.hp_author}</Text>
+                            </View>
+                            <View style={{padding:7}}>
+                                <Text style={styles.contentText}>{this.state.hp_content}</Text>
+                            </View>
+                            <View style={{flexDirection:'row',justifyContent:'flex-end'}}>
+                                <Text style={{color:'#ccc',fontSize:12}}>{this.state.hp_makettime}</Text>
+                            </View>
                         </View>
-                        <View style={{padding:7}}>
-                            <Text style={styles.contentText}>{this.state.hp_content}</Text>
-                        </View>
-                        <View style={{flexDirection:'row',justifyContent:'flex-end'}}>
-                            <Text style={{color:'#ccc',fontSize:12}}>{this.state.hp_makettime}</Text>
-                        </View>
-                    </View>
-                </ScrollView>
+                    </ScrollView>
+                </View>
                 <View style={styles.bottomContent}>
                     <TouchableWithoutFeedback onPress={()=>alert('小记')}>
                         <View style={{

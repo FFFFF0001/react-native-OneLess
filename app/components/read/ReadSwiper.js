@@ -10,19 +10,25 @@ import {
 } from 'react-native';
 import Swiper from '../common/Swiper'
 import res from '../../common/commonResources'
-import ReadCarouselDetail from './ReadCarouselDetail'
+import ReadCarouselList from './ReadCarouselList'
 var StyleSheet = require('../../common/commonStyleSheet')
 const scaleWH = 2.21;
 export default class ReadSwiper extends Component {
     constructor() {
         super();
         this.state = {};
+    }
 
+    shouldComponentUpdate(nextProps) {
+        if (this.props.data === nextProps.data) {
+            return false;
+        }
+        return true;
     }
 
     _onPress(item) {
         this.props.navigator.push({
-            component: ReadCarouselDetail,
+            component: ReadCarouselList,
             type: 'Bottom',
             bgcolor: item.bgcolor,
             bottom_text: item.bottom_text,

@@ -582,7 +582,7 @@ export default class extends Component {
     renderScrollView = pages => {
         if (Platform.OS === 'ios') {
             return (
-                <ScrollView ref='scrollView'
+                <ScrollView ref='scrollView' removeClippedSubviews={false}
                     {...this.props}
                     {...this.scrollViewPropOverrides()}
                             contentContainerStyle={[styles.wrapper, this.props.style]}

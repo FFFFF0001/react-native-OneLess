@@ -13,7 +13,7 @@ export function getReadingImageList() {
 
 //顶部滚动图片点击进去的内容
 export function getReadingImageDetail(id) {
-  return getFetchFromCache(`/reading/carousel/${id}`);
+  return getFetchNeverCached(`/reading/carousel/${id}`);
 }
 
 //底部的短篇连载问答列表 这个应该会更新的, 所以不缓存

@@ -6,19 +6,38 @@ import {
     View,
 } from 'react-native';
 import ReadSwiper from './ReadSwiper'
-import {fetchReadingImageList} from './Fun'
+import ReadArticleItem from './ReadArticleItem'
+import OneSwiper from '../common/OneSwipe'
+import {fetchReadingImageList,fetchLatestArticleList} from './Fun'
 
 export default class Read extends Component {
     constructor() {
         super();
         this.state = {
-            data: []
+            data: [],
+            essay: [],
+            question:[],
+            serial:[]
         };
     }
 
     componentWillMount() {
-        fetchReadingImageList(this)
+        fetchReadingImageList(this);
+        fetchLatestArticleList(this);
     }
+
+    renderReadPanels() {
+        let content = [];
+        this.state.essay.map((item, i) =>
+            content.push(
+                <ReadArticleItem
+                    key={i}
+                />
+            )
+        );
+        return content
+    }
+
 
     render() {
         return (
@@ -26,6 +45,9 @@ export default class Read extends Component {
                 <ReadSwiper
                     navigator={this.props.navigator}
                     data={this.state.data}/>
+                <OneSwiper>
+                    {this.renderReadPanels()}
+                </OneSwiper>
             </View>
         );
     }

@@ -5,7 +5,8 @@ import React, {Component} from 'react';
 import {
     StyleSheet,
     Navigator,
-    BackAndroid
+    BackAndroid,
+    ToastAndroid
 } from 'react-native';
 
 export default class App extends Component {
@@ -20,28 +21,38 @@ export default class App extends Component {
 
     onBackAndroid() {
         const nav = this.navigator;
-        const routers = nav.getCurrentRoutes();
-        if (routers.length > 1) {
-            const top = routers[routers.length - 1];
-            if (top.ignoreBack || top.component.ignoreBack) {
-                // 路由或组件上决定这个界面忽略back键
-                return true;
-            }
-            const handleBack = top.handleBack || top.component.handleBack;
-            if (handleBack) {
-                // 路由或组件上决定这个界面自行处理back键
-                if (handleBack()) {
-                    return handleBack()
-                } else {
-                    nav.pop();
+        if (nav !== null) {
+            const routers = nav.getCurrentRoutes();
+            if (routers.length > 1) {
+                const top = routers[routers.length - 1];
+                if (top.ignoreBack || top.component.ignoreBack) {
+                    // 路由或组件上决定这个界面忽略back键
                     return true;
                 }
+                const handleBack = top.handleBack || top.component.handleBack;
+                if (handleBack) {
+                    // 路由或组件上决定这个界面自行处理back键
+                    if (handleBack()) {
+                        return handleBack()
+                    } else {
+                        nav.pop();
+                        return true;
+                    }
+                }
+                // 默认行为： 退出当前界面。
+                nav.pop();
+                return true;
             }
-            // 默认行为： 退出当前界面。
-            nav.pop();
-            return true;
         }
-        return false;
+        if (!this.lastBackPressed || Date.now() - this.lastBackPressed > 1000) {
+            console.log('back', 'true')
+            //最近2秒内按过back键，可以退出应用。
+            return false;
+        }
+        console.log('back', 'false')
+        this.lastBackPressed = Date.now();
+        ToastAndroid.show('再按一次退出一个', ToastAndroid.SHORT);
+        return true;
     };
 
     /**
