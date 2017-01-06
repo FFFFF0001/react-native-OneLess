@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import res from '../../common/commonResources'
 import {fetchDetail} from './Fun'
+import PictureOverlay from './PictureOverlay'
 const StyleSheet = require('../../common/commonStyleSheet');
 const scaleX = res.screen.scaleX;
 export default class PicItem extends Component {
@@ -30,17 +31,24 @@ export default class PicItem extends Component {
         fetchDetail(this, this.props.index);
     }
 
+    onImageClick() {
+        this.po._showModal();
+    }
+
     render() {
+        let url = this.state.hp_img_url;
         return (
             <View style={styles.containers}>
                 <View style={{height:res.screen.screenHeight - 230}}>
                     <ScrollView showsVerticalScrollIndicator={false}
                                 removeClippedSubviews={false}>
                         <View style={styles.containerOn}>
-                            <Image
-                                resizeMode={Image.resizeMode.contain}
-                                style={styles.picture}
-                                source={this.state.hp_img_url===''?require('../../images/loading_12.png'):{uri: this.state.hp_img_url}}/>
+                            <TouchableWithoutFeedback onPress={this.onImageClick.bind(this)}>
+                                <Image
+                                    resizeMode={Image.resizeMode.contain}
+                                    style={styles.picture}
+                                    source={this.state.hp_img_url===''?require('../../images/loading_12.png'):{uri: url}}/>
+                            </TouchableWithoutFeedback>
                             <View
                                 style={{backgroundColor:'white',flexDirection:'row',justifyContent:'space-between',marginTop:5,padding:3}}>
                                 <Text style={{color:'#ccc',fontSize:12}}>{this.state.hp_title}</Text>
@@ -89,6 +97,10 @@ export default class PicItem extends Component {
                         </View>
                     </View>
                 </View>
+                <PictureOverlay
+                    ref={(po) => { this.po = po}}
+                    url={url}
+                />
             </View>
         );
     }

@@ -25,6 +25,7 @@ export default class overlayContainer extends Component {
     static defaultProps = {
         defaultClickClose: true,
     };
+
     constructor(prop) {
         super(prop);
         this.state = {
