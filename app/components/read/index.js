@@ -8,7 +8,7 @@ import {
 import ReadSwiper from './ReadSwiper'
 import ReadArticleItem from './ReadArticleItem'
 import OneSwiper from '../common/OneSwipe'
-import {fetchReadingImageList,fetchLatestArticleList} from './Fun'
+import {fetchReadingImageList, fetchLatestArticleList} from './Fun'
 
 export default class Read extends Component {
     constructor() {
@@ -16,8 +16,8 @@ export default class Read extends Component {
         this.state = {
             data: [],
             essay: [],
-            question:[],
-            serial:[]
+            question: [],
+            serial: []
         };
     }
 
@@ -32,6 +32,9 @@ export default class Read extends Component {
             content.push(
                 <ReadArticleItem
                     key={i}
+                    essay={item}
+                    serial={this.state.serial[i]}
+                    question={this.state.question[i]}
                 />
             )
         );
@@ -45,7 +48,9 @@ export default class Read extends Component {
                 <ReadSwiper
                     navigator={this.props.navigator}
                     data={this.state.data}/>
-                <OneSwiper>
+                <OneSwiper
+                    type={'half'}
+                >
                     {this.renderReadPanels()}
                 </OneSwiper>
             </View>

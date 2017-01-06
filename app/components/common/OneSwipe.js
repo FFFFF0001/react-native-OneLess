@@ -145,19 +145,24 @@ export default class OneSwipe extends Component {
     }
 
     renderBackground() {
+        let type = this.props.type;
+        let marginX = 0;
+        if (type === 'half') {
+            marginX = -180
+        }
         return (
             <View
                 style={styles.background}>
                 <View style={{flexDirection:'row',alignItems:'center',opacity:this.state.opac}}>
-                    <Image style={{width:40,height:40,marginLeft:this.state.leftTrans,marginTop:-90}}
+                    <Image style={{width:40,height:40,marginLeft:this.state.leftTrans,marginTop:-90+marginX}}
                            source={require('../../images/laud_selected.png')}/>
-                    <Text style={{marginLeft:-5,marginTop:-90}}>加载中~</Text>
+                    <Text style={{marginLeft:-5,marginTop:-90+marginX}}>加载中~</Text>
                 </View>
 
                 <View style={{flexDirection:'row',alignItems:'center',opacity:this.state.opac}}>
-                    <Image style={{width:40,height:40,marginTop:-90}}
+                    <Image style={{width:40,height:40,marginTop:-90+marginX}}
                            source={require('../../images/laud_selected.png')}/>
-                    <Text style={{marginLeft:-5,marginTop:-90,marginRight:5+this.state.rightTrans}}>加载中~</Text>
+                    <Text style={{marginLeft:-5,marginTop:-90+marginX,marginRight:5+this.state.rightTrans}}>加载中~</Text>
                 </View>
             </View>
         )
