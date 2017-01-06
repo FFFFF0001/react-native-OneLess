@@ -32,6 +32,7 @@ export default class Read extends Component {
             content.push(
                 <ReadArticleItem
                     key={i}
+                    navigator={this.props.navigator}
                     essay={item}
                     serial={this.state.serial[i]}
                     question={this.state.question[i]}
