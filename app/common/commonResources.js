@@ -13,7 +13,7 @@ const CommonResources = {
         scaleX:scaleX,
         scaleY:scaleY,
         screenHeight: screenHeight,
-        screenWidth: screenWidth,
+        screenWidth: screenWidth+1,
         fontDisparity:fontDisparity,
     }
 };

@@ -33,7 +33,7 @@ export default class App extends Component {
                 if (handleBack) {
                     // 路由或组件上决定这个界面自行处理back键
                     if (handleBack()) {
-                        return handleBack()
+                        return false
                     } else {
                         nav.pop();
                         return true;

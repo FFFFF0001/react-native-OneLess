@@ -10,9 +10,9 @@ import {
     StyleSheet,
     Image
 } from 'react-native';
-var Dimensions = require('Dimensions');
-var screenWidth = Dimensions.get('window').width;
-var screenHeight = Dimensions.get('window').height;
+let Dimensions = require('Dimensions');
+let screenWidth = Dimensions.get('window').width;
+let screenHeight = Dimensions.get('window').height;
 export default class OneSwipe extends Component {
     static propTypes = {
         children: React.PropTypes.node.isRequired,
@@ -85,7 +85,7 @@ export default class OneSwipe extends Component {
                 let offsetX = -dx / this.state.viewWidth + this.state.index;
                 if (offsetX < 0.0) {
                     if (Math.abs(dx) > 280.0) {
-                        console.log('refresh')
+                        // console.log('refresh')
                     }
                     this.state.scrollValue.setValue(offsetX / 2.5);
 
@@ -95,7 +95,7 @@ export default class OneSwipe extends Component {
                     })
                 } else if (offsetX > 9.0) {
                     if (Math.abs(dx) > 280.0) {
-                        console.log('loadmore')
+                        // console.log('loadmore')
                     }
                     this.setState({
                         rightTrans: Math.abs(-dx / this.state.viewWidth * 40),
