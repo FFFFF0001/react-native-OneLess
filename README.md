@@ -18,6 +18,6 @@
  
 ####目前进度见图片：
 
-![](https://github.com/MIFind/react-native-OneLess/blob/master/image/One_112.gif)  
+![](https://github.com/MIFind/react-native-OneLess/blob/master/image/ONE_112.gif)  
 
 ####欢迎大家关注我的微信公共号：开发者米饭
