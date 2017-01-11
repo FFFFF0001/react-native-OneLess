@@ -41,8 +41,8 @@ export default class ReadArticleItem extends Component {
                                 <Text style={{color:'#333',fontSize:18,width:240}}>{essay.hp_title}</Text>
                                 <Image style={styles.img} source={require('../../images/essay_image.png')}/>
                             </View>
-                            <Text style={{color:'#333',fontSize:14,marginTop:8}}>{essay.author[0].user_name}</Text>
-                            <Text style={{color:'#333',fontSize:14,marginTop:8}}>{essay.guide_word}</Text>
+                            <Text style={{color:'#333',fontSize:13,marginTop:8}}>{essay.author[0].user_name}</Text>
+                            <Text style={{color:'#333',fontSize:13,marginTop:8,lineHeight:20}}>{essay.guide_word}</Text>
                         </View>
                     </TouchableWithoutFeedback>
                     <TouchableWithoutFeedback onPress={()=>fetchEssayDetailInfo(serial.id,'2',this)}>
@@ -51,8 +51,8 @@ export default class ReadArticleItem extends Component {
                                 <Text style={{color:'#333',fontSize:18,width:240}}>{serial.title}</Text>
                                 <Image style={styles.img} source={require('../../images/serial_image.png')}/>
                             </View>
-                            <Text style={{color:'#333',fontSize:14,marginTop:8}}>{serial.author.user_name}</Text>
-                            <Text style={{color:'#333',fontSize:14,marginTop:8}}>{serial.excerpt}</Text>
+                            <Text style={{color:'#333',fontSize:13,marginTop:8}}>{serial.author.user_name}</Text>
+                            <Text style={{color:'#333',fontSize:13,marginTop:8,lineHeight:20}}>{serial.excerpt}</Text>
                         </View>
                     </TouchableWithoutFeedback>
                     <TouchableWithoutFeedback onPress={()=>fetchEssayDetailInfo(question.question_id,'3',this)}>
@@ -61,8 +61,8 @@ export default class ReadArticleItem extends Component {
                                 <Text style={{color:'#333',fontSize:18,width:240}}>{question.question_title}</Text>
                                 <Image style={styles.img} source={require('../../images/question_image.png')}/>
                             </View>
-                            <Text style={{color:'#333',fontSize:14,marginTop:8}}>{question.answer_title}</Text>
-                            <Text style={{color:'#333',fontSize:14,marginTop:8}}>{question.answer_content}</Text>
+                            <Text style={{color:'#333',fontSize:13,marginTop:8}}>{question.answer_title}</Text>
+                            <Text style={{color:'#333',fontSize:13,marginTop:8,lineHeight:20}}>{question.answer_content}</Text>
                         </View>
                     </TouchableWithoutFeedback>
                 </View>
