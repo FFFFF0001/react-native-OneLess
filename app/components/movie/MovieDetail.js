@@ -21,7 +21,12 @@ export default class MovieDetail extends Component {
             data: [],
             story: {
                 title: '',
-                content: ''
+                content: '',
+                input_date: '',
+                user: {
+                    user_name: '',
+                    web_url: ''
+                }
             },
         };
     }
@@ -46,17 +51,36 @@ export default class MovieDetail extends Component {
                     <View style={{flexDirection:'row',justifyContent:'flex-end'}}>
                         <View
                             style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',marginRight: 15}}>
-                            <Image style={{width:40,height:40,marginRight:5}}
+                            <Image style={{width:30,height:30,marginRight:5}}
                                    source={require('../../images/plz_grade_pressed.png')}/>
                             <Text style={styles.textGray}>评分</Text>
                         </View>
-                        <Image style={{width:46,height:46,marginRight:10}}
+                        <Image style={{width:38,height:38,marginRight:10}}
                                source={require('../../images/share_image.png')}/>
                     </View>
                     <View style={styles.horizonLine}/>
                     <View style={{padding:15,backgroundColor:'rgba(247,247,247,1)'}}>
                         <Text style={styles.textGray}>电影故事</Text>
                     </View>
+                    <View style={{flexDirection:'row',justifyContent:'space-between',padding:9}}>
+                        <View style={{flexDirection:'row'}}>
+                            <Image style={styles.headimg} resizeMode={'cover'}
+                                   source={this.state.story.user.web_url===''?require('../../images/loading_12.png'):{uri:this.state.story.user.web_url}}/>
+                            <View style={{flexDirection:'column',justifyContent:'space-around',marginLeft:5}}>
+                                <Text
+                                    style={[{marginTop:4},styles.text_author]}>{this.state.story.user.user_name}</Text>
+                                <Text style={[{marginBottom:4},styles.text_s]}>{this.state.story.input_date}</Text>
+                            </View>
+                        </View>
+                        <View style={{flexDirection:'row',alignItems:'center'}}>
+                            <Image style={{width:33,height:33}} resizeMode={'cover'}
+                                   source={require('../../images/laud_selected.png')}/>
+                            <Text
+                                style={styles.text_s}>{this.state.story.praisenum}</Text>
+                        </View>
+                    </View>
+                    <Text
+                        style={{marginLeft:15,fontSize:15,color:'#222',fontFamily:'Helvetica',fontStyle:'italic'}}>{this.state.story.title}</Text>
                     <MovieStory
                         content={this.state.story.content}
                     />
@@ -107,7 +131,20 @@ const styles = StyleSheet.create({
         width: screenWidth,
     },
     textGray: {
-        fontSize: 13,
-        color: '#666'
-    }
+        fontSize: 11,
+        color: '#aaa'
+    },
+    headimg: {
+        width: 50,
+        height: 50,
+        borderRadius: 22
+    },
+    text_author: {
+        fontSize: 12,
+        color: 'rgba(167,199,254,1)'
+    },
+    text_s: {
+        fontSize: 12,
+        color: '#bbb'
+    },
 });
