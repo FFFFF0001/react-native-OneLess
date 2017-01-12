@@ -36,9 +36,9 @@ export default class OneSwipe extends Component {
             index: props.index,
             scrollValue: new Animated.Value(props.index),
             viewWidth: Dimensions.get('window').width,
-            rightTrans: 0,
-            leftTrans: 0,
-            opac: 0
+            rightTrans: new Animated.Value(0),
+            leftTrans: new Animated.Value(0),
+            opac: new Animated.Value(0)
         };
     }
 
@@ -77,8 +77,6 @@ export default class OneSwipe extends Component {
             // Touch is released, scroll to the one that you're closest to
             onPanResponderRelease: release,
             onPanResponderTerminate: release,
-
-
             // Dragging, move the view with the touch
             onPanResponderMove: (e, gestureState) => {
                 let dx = gestureState.dx;
@@ -88,19 +86,14 @@ export default class OneSwipe extends Component {
                         // console.log('refresh')
                     }
                     this.state.scrollValue.setValue(offsetX / 2.5);
-
-                    this.setState({
-                        leftTrans: Math.abs(offsetX * 40),
-                        opac: Math.abs(offsetX * 1.2)
-                    })
+                    this.state.leftTrans.setValue(Math.abs(offsetX * 40));
+                    this.state.opac.setValue(Math.abs(offsetX * 1.2));
                 } else if (offsetX > 9.0) {
                     if (Math.abs(dx) > 280.0) {
                         // console.log('loadmore')
                     }
-                    this.setState({
-                        rightTrans: Math.abs(-dx / this.state.viewWidth * 40),
-                        opac: Math.abs(-dx / this.state.viewWidth * 1.2)
-                    })
+                    this.state.rightTrans.setValue(Math.abs(-dx / this.state.viewWidth * 40));
+                    this.state.opac.setValue(Math.abs(-dx / this.state.viewWidth * 1.2));
                     offsetX = (-dx / this.state.viewWidth ) / 2.5 + this.state.index;
                     this.state.scrollValue.setValue(offsetX);
                 } else {
@@ -153,17 +146,18 @@ export default class OneSwipe extends Component {
         return (
             <View
                 style={styles.background}>
-                <View style={{flexDirection:'row',alignItems:'center',opacity:this.state.opac}}>
-                    <Image style={{width:40,height:40,marginLeft:this.state.leftTrans,marginTop:-90+marginX}}
-                           source={require('../../images/laud_selected.png')}/>
+                <Animated.View style={{flexDirection:'row',alignItems:'center',opacity:this.state.opac}}>
+                    <Animated.Image style={{width:40,height:40,marginLeft:this.state.leftTrans,marginTop:-90+marginX}}
+                                    source={require('../../images/laud_selected.png')}/>
                     <Text style={{marginLeft:-5,marginTop:-90+marginX}}>加载中~</Text>
-                </View>
+                </Animated.View>
 
-                <View style={{flexDirection:'row',alignItems:'center',opacity:this.state.opac}}>
+                <Animated.View style={{flexDirection:'row',alignItems:'center',opacity:this.state.opac}}>
                     <Image style={{width:40,height:40,marginTop:-90+marginX}}
                            source={require('../../images/laud_selected.png')}/>
-                    <Text style={{marginLeft:-5,marginTop:-90+marginX,marginRight:5+this.state.rightTrans}}>加载中~</Text>
-                </View>
+                    <Animated.Text
+                        style={{marginLeft:-5,marginTop:-90+marginX,marginRight:this.state.rightTrans}}>加载中~</Animated.Text>
+                </Animated.View>
             </View>
         )
     }

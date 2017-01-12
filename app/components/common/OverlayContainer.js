@@ -9,6 +9,7 @@ import {
     Modal,
     Dimensions,
     Text,
+    PanResponder
 } from 'react-native'
 
 /**
@@ -85,7 +86,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         width: Dimensions.get('window').width,
         height: Dimensions.get('window').height,
-        overflow: 'hidden',
         backgroundColor: 'rgba(00, 00, 00, 0)',
     },
     overlay: {
