@@ -63,12 +63,10 @@ class OneSwipe extends Component {
             onMoveShouldSetPanResponder: (e, gestureState) => {
                 if (!this.props.captureState) {
                     const {threshold} = this.props;
-
                     // Claim responder if it's a horizontal pan
                     if (Math.abs(gestureState.dx) > Math.abs(gestureState.dy)) {
                         return true;
                     }
-
                     // and only if it exceeds the threshold
                     if (threshold - Math.abs(gestureState.dx) > 0) {
                         return false;
