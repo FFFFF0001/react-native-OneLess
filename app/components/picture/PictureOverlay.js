@@ -52,8 +52,9 @@ export default class PictureOverlay extends Component {
 
     render() {
         return (
-            <OverlayContainer ref={(oc) => { this.oc = oc }}
-                              defaultClickClose={true}>
+            <OverlayContainer
+                ref={(oc) => { this.oc = oc }}
+                defaultClickClose={true}>
                 <TouchableWithoutFeedback onLongPress={this.onLongPress.bind(this)}>
                     <Image
                         resizeMode={Image.resizeMode.contain}

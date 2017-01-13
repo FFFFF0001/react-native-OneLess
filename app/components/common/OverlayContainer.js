@@ -9,9 +9,9 @@ import {
     Modal,
     Dimensions,
     Text,
-    PanResponder
 } from 'react-native'
-
+import store from '../../store/configStore'
+import {changeCaptureState} from '../../actions/changeCaptureStateAction'
 /**
  * 通过Model写的蒙版。
  * 可以在里面添加想要的效果，比如Dialog
@@ -35,12 +35,14 @@ export default class overlayContainer extends Component {
     }
 
     showModal() {
+        store.dispatch(changeCaptureState(true));
         this.setState({
             modalVisible: true
         })
     }
 
     closeModal() {
+        store.dispatch(changeCaptureState(false));
         this.setState({
             modalVisible: false
         })

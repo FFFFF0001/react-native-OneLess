@@ -10,10 +10,11 @@ import {
     StyleSheet,
     Image
 } from 'react-native';
+import {connect} from 'react-redux';
 let Dimensions = require('Dimensions');
 let screenWidth = Dimensions.get('window').width;
 let screenHeight = Dimensions.get('window').height;
-export default class OneSwipe extends Component {
+class OneSwipe extends Component {
     static propTypes = {
         children: React.PropTypes.node.isRequired,
         index: React.PropTypes.number,
@@ -60,44 +61,46 @@ export default class OneSwipe extends Component {
         this.goToPage(1);
         this._panResponder = PanResponder.create({
             onMoveShouldSetPanResponder: (e, gestureState) => {
-                const {threshold} = this.props;
+                if (!this.props.captureState) {
+                    const {threshold} = this.props;
 
-                // Claim responder if it's a horizontal pan
-                if (Math.abs(gestureState.dx) > Math.abs(gestureState.dy)) {
-                    return true;
+                    // Claim responder if it's a horizontal pan
+                    if (Math.abs(gestureState.dx) > Math.abs(gestureState.dy)) {
+                        return true;
+                    }
+
+                    // and only if it exceeds the threshold
+                    if (threshold - Math.abs(gestureState.dx) > 0) {
+                        return false;
+                    }
                 }
-
-                // and only if it exceeds the threshold
-                if (threshold - Math.abs(gestureState.dx) > 0) {
-                    return false;
-                }
-
             },
-
             // Touch is released, scroll to the one that you're closest to
             onPanResponderRelease: release,
             onPanResponderTerminate: release,
             // Dragging, move the view with the touch
             onPanResponderMove: (e, gestureState) => {
-                let dx = gestureState.dx;
-                let offsetX = -dx / this.state.viewWidth + this.state.index;
-                if (offsetX < 0.0) {
-                    if (Math.abs(dx) > 280.0) {
-                        // console.log('refresh')
+                if (!this.props.captureState) {
+                    let dx = gestureState.dx;
+                    let offsetX = -dx / this.state.viewWidth + this.state.index;
+                    if (offsetX < 0.0) {
+                        if (Math.abs(dx) > 280.0) {
+                            // console.log('refresh')
+                        }
+                        this.state.scrollValue.setValue(offsetX / 2.5);
+                        this.state.leftTrans.setValue(Math.abs(offsetX * 40));
+                        this.state.opac.setValue(Math.abs(offsetX * 1.2));
+                    } else if (offsetX > 9.0) {
+                        if (Math.abs(dx) > 280.0) {
+                            // console.log('loadmore')
+                        }
+                        this.state.rightTrans.setValue(Math.abs(-dx / this.state.viewWidth * 40));
+                        this.state.opac.setValue(Math.abs(-dx / this.state.viewWidth * 1.2));
+                        offsetX = (-dx / this.state.viewWidth ) / 2.5 + this.state.index;
+                        this.state.scrollValue.setValue(offsetX);
+                    } else {
+                        this.state.scrollValue.setValue(offsetX);
                     }
-                    this.state.scrollValue.setValue(offsetX / 2.5);
-                    this.state.leftTrans.setValue(Math.abs(offsetX * 40));
-                    this.state.opac.setValue(Math.abs(offsetX * 1.2));
-                } else if (offsetX > 9.0) {
-                    if (Math.abs(dx) > 280.0) {
-                        // console.log('loadmore')
-                    }
-                    this.state.rightTrans.setValue(Math.abs(-dx / this.state.viewWidth * 40));
-                    this.state.opac.setValue(Math.abs(-dx / this.state.viewWidth * 1.2));
-                    offsetX = (-dx / this.state.viewWidth ) / 2.5 + this.state.index;
-                    this.state.scrollValue.setValue(offsetX);
-                } else {
-                    this.state.scrollValue.setValue(offsetX);
                 }
             }
         });
@@ -132,7 +135,8 @@ export default class OneSwipe extends Component {
         let content = []
         this.props.children.map((item, i) =>
             content.push(
-                <View style={{flex:1}} key={i}>{item}</View>
+                <View
+                    style={{flex:1}} key={i}>{item}</View>
             ));
         return content
     }
@@ -175,8 +179,9 @@ export default class OneSwipe extends Component {
 
 
         return (
-            <View onLayout={ this.handleLayout.bind(this) }
-                  style={ [{ flex: 1, overflow: 'visible'}] }>
+            <View
+                onLayout={ this.handleLayout.bind(this) }
+                style={ [{ flex: 1, overflow: 'visible'}] }>
                 {this.renderBackground()}
                 <Animated.View
                     {...this._panResponder.panHandlers}
@@ -186,6 +191,12 @@ export default class OneSwipe extends Component {
                 </Animated.View>
             </View>
         );
+    }
+}
+
+function mapStateToProps(state) {
+    return {
+        captureState: state.common.changeTouchCaptureState
     }
 }
 
@@ -203,3 +214,6 @@ const styles = StyleSheet.create({
         flexDirection: 'row'
     }
 })
+
+
+export default connect(mapStateToProps)(OneSwipe);
