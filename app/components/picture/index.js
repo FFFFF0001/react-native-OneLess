@@ -8,7 +8,7 @@ import {
     TouchableWithoutFeedback
 } from 'react-native';
 import OneSwiper from '../common/OneSwipe'
-import {fetchList} from './Fun'
+import {fetchList, refreshList,loadPicFactory} from './Fun'
 import PicItem from './PicItem'
 export default class Picture extends Component {
     constructor() {
@@ -35,13 +35,26 @@ export default class Picture extends Component {
             <PicItem
                 key={i}
                 index={item}
+                navigator={this.props.navigator}
             />
         );
     }
 
+    refreshPics() {
+        refreshList(this);
+    }
+
+    loadFactory() {
+        loadPicFactory(this);
+    }
+
+
     render() {
         return (
-            <OneSwiper>
+            <OneSwiper
+                onRefresh={this.refreshPics.bind(this)}
+                onLoadFactory={this.loadFactory.bind(this)}
+            >
                 {this.renderPanels()}
             </OneSwiper>
         );

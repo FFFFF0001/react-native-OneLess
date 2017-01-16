@@ -12,6 +12,7 @@ import {
 import res from '../../common/commonResources'
 import {fetchDetail} from './Fun'
 import PictureOverlay from './PictureOverlay'
+import {formatDate} from  '../../common/commonFun'
 const StyleSheet = require('../../common/commonStyleSheet');
 const scaleX = res.screen.scaleX;
 export default class PicItem extends Component {
@@ -58,7 +59,7 @@ export default class PicItem extends Component {
                                 <Text style={styles.contentText}>{this.state.hp_content}</Text>
                             </View>
                             <View style={{flexDirection:'row',justifyContent:'flex-end'}}>
-                                <Text style={{color:'#ccc',fontSize:12}}>{this.state.hp_makettime}</Text>
+                                <Text style={{color:'#ccc',fontSize:12}}>{formatDate(this.state.hp_makettime)}</Text>
                             </View>
                         </View>
                     </ScrollView>

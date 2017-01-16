@@ -11,6 +11,7 @@ import {
     TouchableWithoutFeedback
 } from 'react-native';
 import resources from '../../common/commonResources'
+import {formatDate} from  '../../common/commonFun'
 import NavigationBar from '../common/NavigationBar'
 export default class ReadCarouselDetail extends Component {
     constructor() {
@@ -50,7 +51,7 @@ export default class ReadCarouselDetail extends Component {
                                    {uri:essayDetail.author[0].web_url||essayDetail.wb_img_url}}/>
                             <View style={{flexDirection:'column',justifyContent:'space-around',marginLeft:5}}>
                                 <Text style={[{marginTop:4},styles.text_author]}>{essayDetail.hp_author}</Text>
-                                <Text style={[{marginBottom:4},styles.text_s]}>{essayDetail.hp_makettime}</Text>
+                                <Text style={[{marginBottom:4},styles.text_s]}>{formatDate(essayDetail.hp_makettime)}</Text>
                             </View>
                         </View>
                         {this.renderListener()}
@@ -96,7 +97,7 @@ export default class ReadCarouselDetail extends Component {
                     <View style={styles.horizonLine}/>
                     <View style={{flexDirection:'row',justifyContent:'space-between',marginTop:20}}>
                         <Text style={styles.content}>{essayDetail.answer_title}</Text>
-                        <Text style={styles.text_s}>{essayDetail.question_makettime}</Text>
+                        <Text style={styles.text_s}>{formatDate(essayDetail.question_makettime)}</Text>
                     </View>
                     <Text
                         style={[{marginBottom:10,marginTop:10},styles.content]}>{essayDetail.answer_content}</Text>

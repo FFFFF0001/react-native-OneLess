@@ -11,9 +11,11 @@ import {
     Image
 } from 'react-native';
 import {connect} from 'react-redux';
+import {changeOneSwipeState} from '../../actions/changeOneSwipeStateAction'
 let Dimensions = require('Dimensions');
 let screenWidth = Dimensions.get('window').width;
 let screenHeight = Dimensions.get('window').height;
+
 class OneSwipe extends Component {
     static propTypes = {
         children: React.PropTypes.node.isRequired,
@@ -21,6 +23,8 @@ class OneSwipe extends Component {
         threshold: React.PropTypes.number,
         pager: React.PropTypes.bool,
         onPageChange: React.PropTypes.func,
+        onRefresh: React.PropTypes.func,
+        onLoadFactory: React.PropTypes.func,
     };
 
     static defaultProps = {
@@ -29,6 +33,10 @@ class OneSwipe extends Component {
         threshold: 25,
         onPageChange: () => {
         },
+        onRefresh: () => {
+        },
+        onLoadFactory: () => {
+        }
     };
 
     constructor(props) {
@@ -83,14 +91,20 @@ class OneSwipe extends Component {
                     let offsetX = -dx / this.state.viewWidth + this.state.index;
                     if (offsetX < 0.0) {
                         if (Math.abs(dx) > 280.0) {
-                            // console.log('refresh')
+                            if (this.props.swipeState) {
+                                this.props.dispatch(changeOneSwipeState(false))
+                                this.props.onRefresh()
+                            }
                         }
                         this.state.scrollValue.setValue(offsetX / 2.5);
                         this.state.leftTrans.setValue(Math.abs(offsetX * 40));
                         this.state.opac.setValue(Math.abs(offsetX * 1.2));
                     } else if (offsetX > 9.0) {
                         if (Math.abs(dx) > 280.0) {
-                            // console.log('loadmore')
+                            if (this.props.swipeState) {
+                                this.props.dispatch(changeOneSwipeState(false))
+                                this.props.onLoadFactory()
+                            }
                         }
                         this.state.rightTrans.setValue(Math.abs(-dx / this.state.viewWidth * 40));
                         this.state.opac.setValue(Math.abs(-dx / this.state.viewWidth * 1.2));
@@ -194,7 +208,8 @@ class OneSwipe extends Component {
 
 function mapStateToProps(state) {
     return {
-        captureState: state.common.changeTouchCaptureState
+        captureState: state.common.changeTouchCaptureState,
+        swipeState: state.common.changeOneSwipeRefreshState
     }
 }
 

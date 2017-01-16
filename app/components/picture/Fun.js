@@ -2,6 +2,9 @@
  * Created by mifind on 2016/12/28.
  */
 import {getLatestPictureIdList, getPictureDetail} from '../../network/picture'
+import store from '../../store/configStore'
+import {changeOneSwipeState} from '../../actions/changeOneSwipeStateAction'
+import PictureFactory from './PictureFactory'
 export function fetchList(self) {
     getLatestPictureIdList().then(data => {
         console.log(data);
@@ -26,4 +29,24 @@ export function fetchDetail(self, index: string) {
     }).catch(() => {
         console.warn('加载失败');
     });
+}
+
+export function refreshList(self) {
+    getLatestPictureIdList().then(data => {
+        if (data[0] !== self.state.idlist[0]) {
+            self.setState({
+                idlist: data
+            })
+        }
+        store.dispatch(changeOneSwipeState(true))
+    }).catch(() => {
+        console.warn('加载失败');
+        store.dispatch(changeOneSwipeState(true))
+    });
+}
+
+export function loadPicFactory(self) {
+    self.props.navigator.push({
+        component:PictureFactory,
+    })
 }

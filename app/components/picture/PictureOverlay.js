@@ -14,7 +14,6 @@ import resources from '../../common/commonResources';
 import OverlayContainer from '../common/OverlayContainer';
 import Dialog from '../common/DialogBox';
 const scaleX = resources.screen.scale;
-const scaleY = resources.screen.scaleY;
 /**
  * 借款须知
  */
