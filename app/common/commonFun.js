@@ -6,6 +6,9 @@ export function formatDate(date: string) {
     let year = splitDate[0];
     let month = formatMonth(splitDate[1]);
     let day = splitDate[2];
+    if (day === undefined) {
+        return month + "." + year;
+    }
     return day + ' ' + month + "." + year;
 }
 

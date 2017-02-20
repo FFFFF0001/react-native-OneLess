@@ -38,19 +38,23 @@ export default class Movie extends Component {
     }
 
     _renderRow(rowData: string, sectionID: number, rowID: number) {
-        return (
-            <TouchableWithoutFeedback onPress={this.onMoviesItemClick.bind(this,rowData.id,rowData.title)}>
-                <View style={{marginBottom:10,flexDirection:'row'}}>
-                    <Image style={styles.movieItem}
-                           resizeMode={'stretch'}
-                           source={{uri:rowData.cover}}
-                    />
-                    <Text
-                        style={styles.movieScore}>{rowData.score}</Text>
-                    <Image style={styles.movieScoreImg} source={require('../../images/score_line.png')}/>
-                </View>
-            </TouchableWithoutFeedback>
-        )
+        if (rowData.cover !== '') {
+            return (
+                <TouchableWithoutFeedback onPress={this.onMoviesItemClick.bind(this,rowData.id,rowData.title)}>
+                    <View style={{marginBottom:10,flexDirection:'row'}}>
+                        <Image style={styles.movieItem}
+                               resizeMode={'stretch'}
+                               source={{uri:rowData.cover}}
+                        />
+                        <Text
+                            style={styles.movieScore}>{rowData.score}</Text>
+                        <Image style={styles.movieScoreImg} source={require('../../images/score_line.png')}/>
+                    </View>
+                </TouchableWithoutFeedback>
+            )
+        }else {
+            return(<View/>)
+        }
     }
 
     onLoadMore(data) {

@@ -9,10 +9,12 @@ import {
 import NavigationBar from '../common/NavigationBar'
 import store from '../../store/configStore'
 import {changeOneSwipeState} from '../../actions/changeOneSwipeStateAction'
+import {formatDate} from '../../common/commonFun'
 export default class PictureFactory extends Component {
     constructor() {
         super();
         this.state = {};
+
     }
 
     componentDidMount() {
