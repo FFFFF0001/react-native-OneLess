@@ -1,6 +1,6 @@
 # react-native-OneLess
 # 一个APP的RN版本。
-###问题总结：
+### 问题总结：
 * Q1:页面设置视图位置跟随Tab的点击，初始想法是通过Route切换View。但是这样会造成一个问题就是切换View的时候就要刷新页面，会重新走一遍生命周期。造成页面的卡顿，体验很差。然后想到使用Android中的ViewPager+Fragment的想法。
 外面使用禁止滑动的ViewPager，每个Item内部可以使用Swiper或者自定义就可以了。
    * 方案如上，但是遇到的问题有：Swiper的底层是分平台，Android使用ViewPagerAndroid
@@ -25,8 +25,8 @@
     * 目前找了一些资料学习了RN的事件分发机制与处理，但是由于View嵌套层级较深，而且根View已经加了PanResponse进行手势处理，
     通过事件分发来解决就比较麻烦。通过Redux对项目进行重构，当前通过Redux进行管理状态，解决了这个问题。
  
-####目前进度见图片：
+#### 目前进度见图片：
 
 ![](https://github.com/MIFind/react-native-OneLess/blob/master/image/ONE_112.gif)  
 
-####欢迎大家关注我的微信公共号：开发者米饭
+#### 欢迎大家关注我的微信公共号：开发者米饭
