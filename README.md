@@ -1,5 +1,11 @@
 # react-native-OneLess
 # 一个APP的RN版本。
+
+## 大写的注意：改项目代码为一年前练手的时候写的，rn版本为0.33，代码好多人反应跑不起来，和xcode版本，包版本都有关系，用的rn包里的navigation来处理路由，代码简单，参考价值有限，大家谨慎学习。
+
+## 又重开了一个项目: [react-native-knowme](https://github.com/MIFind/knowme)  RN + h5的，里面的rn代码和h5代码包括简历模板都可以在我的git里找到源码，rn版本是0.51.0,重新组织了一下项目，慢慢更新，欢迎移步学习。
+
+
 ### 问题总结：
 * Q1:页面设置视图位置跟随Tab的点击，初始想法是通过Route切换View。但是这样会造成一个问题就是切换View的时候就要刷新页面，会重新走一遍生命周期。造成页面的卡顿，体验很差。然后想到使用Android中的ViewPager+Fragment的想法。
 外面使用禁止滑动的ViewPager，每个Item内部可以使用Swiper或者自定义就可以了。
